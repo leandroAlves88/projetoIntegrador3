@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'styles/estilo.css')}}" />
+    <title>Super Edital</title>
+</head>
+
+<body>
+    <article class="classePrincial" id="principal">
+        <div id="divPrincial">
+            <br>
+            <br>
+            <div class="imagemIcone" id="imagemIcone">
+                <img src="{{ url_for('static', filename = 'images/iconeSistema.png')}}">
+            </div>
+            {% block conteudo %}
+            <form method="POST" action="/resultado">
+
+                <input type="text" name="txtBusca" id="txtBusca"></input>
+                <br>
+                <br>
+                <button class="btnBuscar" id="btnBuscar" name="btnBuscar" value="Submit">PESQUISAR</button>
+
+                <br>
+                <br>
+            </form>
+            {% endblock %}
+            <div classe="divTextoInicial" id="divTextoInicial">
+                <label>
+                    <p>"Você encontrou o melhor guia de concursos público. Vamos nessa!"</p>
+                </label>
+            </div>
+            <br>
+            <br>
+            <div id="divTabelaInicial" class="divTabelaInicial">
+            </div>
+        </div>
+    </article>
+</body>
+<footer>
+    <h3>©2023 Super Edital Fatec</h3>
+</footer>
+
+</html>
