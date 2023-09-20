@@ -1,9 +1,10 @@
 # projetoIntegrador3
+Esse repositório tem como objetivo a entrega do proejeto integrador
 
-Executar o sistema de forma local
+Execução local do sistema
 
-env/Scripts/activate
+- env/Scripts/activate
 
-$env:FLASK_APP = "main"
+- $env:FLASK_APP = "main"
 
-flask run
+- flask run

@@ -12,11 +12,11 @@ def resultados():
     campo_busca = request.form['txtBusca']
 
     print(f'campo pesquisar: {campo_busca}')
-    buscador.motor_busca(campo_busca)
+    retorno_vagas = buscador.motor_busca(campo_busca)
         #return redirect(request.url)
     #return f'O valor do campo é: {campo_busca}'
-
-    return render_template('resultado.html')
+    return retorno_vagas
+    #return render_template('resultado.html')
 
 @app.route('/login')
 def login():
