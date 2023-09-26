@@ -3,24 +3,35 @@ import buscador
 
 app = Flask(__name__)
 
-@app.route('/')
+
+@app.route("/")
 def home():
-    return render_template('home.html')
+    """
+    Essa função tem o objetivo de iniciar chamando a pagina princial.
+    """
+    return render_template("home.html")
 
-@app.route('/resultado',methods=['POST'])
+
+@app.route("/resultado", methods=["POST"])
 def resultados():
-    campo_busca = request.form['txtBusca']
+    """
+    Essa função tem o objetivo exibir a pagina dos resultados das buscas.
+    """
+    campo_busca = request.form["txtBusca"]
 
-    print(f'campo pesquisar: {campo_busca}')
+    print(f"campo pesquisar: {campo_busca}")
     retorno_vagas = buscador.motor_busca(campo_busca)
-        #return redirect(request.url)
-    #return f'O valor do campo é: {campo_busca}'
+    # return render_template('resultado.html',resultado = retorno_vagas)
     return retorno_vagas
-    #return render_template('resultado.html')
 
-@app.route('/login')
+
+@app.route("/login")
 def login():
-    return render_template('login.html')
+    """
+    Essa função tem o objetivo exibir a pagina de login.
+    """
+    return render_template("login.html")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(debug=True)
