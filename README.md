@@ -1,5 +1,5 @@
 # projetoIntegrador3
-Esse repositório tem como objetivo a entrega do proejeto integrador
+Esse repositório tem como objetivo a entrega do projeto integrador
 
 Execução local do sistema
 
