@@ -18,11 +18,11 @@ footer {
 
 article {
     width: 1200px;
-    height: 600px;
+    height: 590px;
     text-align: center;
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
-    margin: 20px auto 20px;
+    margin: 10px auto 20px;
     padding: 5px;
     overflow: hidden;
     box-shadow: 3px 20px 50px rgb(97, 96, 96);
@@ -103,3 +103,47 @@ article .tabelaResultados {
     margin: 20px auto 20px;
     box-shadow: 3px 20px 50px rgb(97, 96, 96);
 }
+
+.list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.link {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+
+article .divMenuPrincipal {
+    position: relative;
+    background-color: blue;
+    width: 200px;
+}
+
+article .divPrincialResultados {
+    overflow-y: scroll;
+    height: 430px;
+    width: 1050px;
+    margin: 20px;
+    align-items: center;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+}
+
+article .dataframe {
+    position: relative;
+    align-items: center;
+    text-align: center;
+    font-size: small;
+    width: 600px;
+    border: none;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+}
+
+article .btnVoltar {}

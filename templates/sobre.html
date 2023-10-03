@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=Res, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'styles/estilo.css')}}" />
-    <title>Super Edital</title>
+    <title>Sobre</title>
 </head>
 
 <body>
@@ -28,29 +28,20 @@
                 </tr>
             </Table>
         </div>
-        <br>
-        <br>
-        <div>
-            <p>
-            <h1>Resultados</h1>
-            </p>
-            <div id="divPrincialResultados" class="divPrincialResultados">
-                <table id="tabelaResultado" class="tabelaResultado">
-                    <thead>
-                    </thead>
-                    <tbody>
-                        {{ df_html | safe }}
-                    </tbody>
-                </table>
+        <div id="divPrincial">
+            <br>
+            <br>
+            <div class="imagemIcone" id="imagemIcone">
+                <img src="{{ url_for('static', filename = 'images/iconeSistema.png')}}">
             </div>
-            <a href='/'><button id="btnVoltar" class="btnVoltar" value="Submit">Voltar</button></a>
-            <button id="btnExportar" class="btnExportar" value="Submit">Exportar</button>
+            <label>
+                <p>"Sobre"</p>
+            </label>
         </div>
     </article>
-
 </body>
 <footer>
-    <h3>©2023 Super Edital Fatec</h3>
+    <h3>©2023. Super Edital Fatec</h3>
 </footer>
 
 </html>
