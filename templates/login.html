@@ -19,22 +19,25 @@
                     <img src="{{ url_for('static', filename = 'images/imgLogin.png')}}">
                 </div>
                 {% block conteudo %}
-                <form method="POST" action="/resultado">
+                <form>
                     <p> Login: <input type="text" name="txtUsuario" id="txtUsuario"></input></p>
 
                     <br>
                     <p>Senha: <input type="text" name="txtSenha" id="txtSenha"></input></p>
                     <br>
                     <br>
-                    <a href='/'>
-                        <button class="btnEntrar" id="btnEntrar" name="btnEntrar" value="Submit">Entrar</button>
-                        <button class="btnVoltar" id="btnVoltar" name="btnVoltar" value="Submit">Voltar</button>
-                    </a>
+                    <button class="btnEntrar" id="btnEntrar" name="btnEntrar" value="Submit">Entrar</button>
                     <br>
                     <br>
                 </form>
                 {% endblock %}
             </div>
+            <a href='/'>
+                <button class="btnCadastrar" id="btnCadastrar" name="btnCadastrar" value="Submit">Cadastrar</button>
+            </a>
+            <a href='/'>
+                <button class="btnVoltar" id="btnVoltar" name="btnVoltar" value="Submit">Voltar</button>
+            </a>
             <br>
             <br>
             <div id="divTabelaInicial" class="divTabelaInicial">

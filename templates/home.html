@@ -10,30 +10,43 @@
 
 <body>
     <article class="classePrincial" id="Articleprincipal">
+        <div id="divMenuPrincipal" name="divMenuPrincipal">
+            <Table id="class=" listaMenu" align="right">
+                <tr>
+                    <th>
+                        <a href="/" class="link">Home</a>
+                    </th>
+                    <th>
+                        <a href="/resultado" class="link">Resultados</a>
+                    </th>
+                    <th>
+                        <a href="/login" class="link">Login</a>
+                    </th>
+                    <th>
+                        <a href="/sobre" class="link">Sobre</a>
+                    </th>
+                </tr>
+            </Table>
+        </div>
         <div id="divPrincial">
             <br>
             <br>
             <div class="imagemIcone" id="imagemIcone">
                 <img src="{{ url_for('static', filename = 'images/iconeSistema.png')}}">
             </div>
+            <br>
+            <br>
             {% block conteudo %}
-            <form method="POST" action="/resultado">
+            <form method="POST" action="/resultadoBusca">
 
                 <input type="text" name="txtBusca" id="txtBusca"></input>
                 <br>
                 <br>
                 <button class="btnBuscar" id="btnBuscar" name="btnBuscar" value="Submit">PESQUISAR</button>
-
                 <br>
                 <br>
             </form>
             {% endblock %}
-
-            <a href="/login">
-                Login
-            </a>
-
-
             <div classe="divTextoInicial" id="divTextoInicial">
                 <label>
                     <p>"Você encontrou o melhor guia de concursos público. Vamos nessa!"</p>
