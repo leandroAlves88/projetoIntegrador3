@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'styles/estilo.css')}}" />
+    <title>Sobre</title>
+</head>
+
+<body>
+    <article class="classePrincial" id="Articleprincipal">
+        <div id="divMenuPrincipal" name="divMenuPrincipal">
+            <Table id="tbMenu" class="tbMenu" align="right">
+                <tr>
+                    <th>
+                        <a href="/" class="link">Home</a>
+                    </th>
+                    <th>
+                        <a href="/resultado" class="link">Resultados</a>
+                    </th>
+                    <th>
+                        <a href="/login" class="link">Login</a>
+                    </th>
+                    <th>
+                        <a href="/sobre" class="link">Sobre</a>
+                    </th>
+                </tr>
+            </Table>
+        </div>
+        <div id="divPrincial">
+            <br>
+            <br>
+            <div class="imagemIcone" id="imagemIcone">
+                <img src="{{ url_for('static', filename = 'images/iconeSistema.png')}}">
+            </div>
+            <br>
+            <div class="divSobre" id="divSobre">
+                <label>
+                    <p>
+                    <h2>Sobre</h2>
+                    </p>
+                    <br>
+                    <p>O sistema Super Edital tem com objetivo facilar a </p>
+                    <p>busca por concursos públicos de São Paulo e região</p>
+                    <p>As fontes de dados se originam dos sites:</p>
+                    <p>pciconcursos.com.br, jcconcursos.com.br e concursosnobrasil.com</p>
+                </label>
+            </div>
+        </div>
+    </article>
+</body>
+<footer>
+    <h3>©2023. Super Edital Fatec</h3>
+</footer>
+
+</html>

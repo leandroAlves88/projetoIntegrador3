@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'styles/estiloLogin.css')}}" />
+    <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
+    <title>Super Edital</title>
+</head>
+
+<body>
+
+    <body>
+        <article class="classePrincialLogin" id="principalLogin">
+            <div id="divPrincialLogin">
+                <br>
+                <br>
+                <div class="imagemLogin" id="imagemLogin">
+                    <img src="{{ url_for('static', filename = 'images/imgLogin.png')}}">
+                </div>
+                {% block conteudo %}
+                <form>
+                    <p> Nome: <input type="text" name="txtNomeUsuario" id="txtNomeUsuario"></input></p>
+                    <br>
+                    <p> Email: <input type="text" name="txtEmail" id="txEmail"></input></p>
+                    <br>
+                    <p>Senha: <input type="text" name="txtSenha" id="txtSenha"></input></p>
+                    <br>
+                    <br>
+                    <button class="btnCadastro" id="btnCadastro" name="btnCadastro" value="Submit">Cadastrar</button>
+                    <br>
+                    <br>
+                </form>
+                {% endblock %}
+            </div>
+            <br>
+            <br>
+            <div id="divTabelaInicial" class="divTabelaInicial">
+            </div>
+            </div>
+        </article>
+    </body>
+</body>
+<footer>
+    <h3>©2023. Super Edital Fatec</h3>
+</footer>
+
+</html>

@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=Res, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'styles/estilo.css')}}" />
+    <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
     <title>Super Edital</title>
 </head>
 
 <body>
     <article class="classePrincial" id="Articleprincipal">
         <div id="divMenuPrincipal" name="divMenuPrincipal">
-            <Table id="class=" listaMenu" align="right">
+            <Table id="tbMenu" class="tbMenu" align="right">
                 <tr>
                     <th>
                         <a href="/" class="link">Home</a>
@@ -29,7 +30,6 @@
             </Table>
         </div>
         <br>
-        <br>
         <div>
             <p>
             <h1>Resultados</h1>
@@ -44,7 +44,7 @@
                 </table>
             </div>
             <a href='/'><button id="btnVoltar" class="btnVoltar" value="Submit">Voltar</button></a>
-            <button id="btnExportar" class="btnExportar" value="Submit">Exportar</button>
+            <button id="btnExportar" class="btnExportar" value="Submit" onclick="calculaImc()">Exportar</button>
         </div>
     </article>
 
