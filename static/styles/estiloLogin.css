@@ -103,3 +103,8 @@ article .tabelaResultados {
     margin: 20px auto 20px;
     box-shadow: 3px 20px 50px rgb(97, 96, 96);
 }
+
+article .divSobre {
+    width: 400px;
+    background-color: rgb(136, 149, 199);
+}
