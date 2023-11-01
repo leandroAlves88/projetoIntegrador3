@@ -13,13 +13,12 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/resultadoBusca", methods=["POST"])
-def resultadosBusca():
+@app.route("/resultadoBusca/<campo_busca>", methods=["GET"])
+def resultadosBusca(campo_busca):
     """
     Essa função tem o objetivo exibir a pagina dos resultados das buscas.
     """
-
-    campo_busca = request.form["txtBusca"]
+    # campo_busca = request.form["txtBusca"]
     print(f"campo pesquisar: {campo_busca}")
     retorno_vagas = buscador.get_concursos_pci(campo_busca)
 
@@ -34,6 +33,7 @@ def resultadosBusca():
     retorno_vagas = retorno_vagas.to_html(header="true", index=False, justify="center")"""
 
     # return render_template("/resultados.html", df_html=retorno_vagas, title="Vagas")
+    print(retorno_vagas)
     return jsonify(retorno_vagas)
 
 
@@ -71,4 +71,4 @@ def cadastro():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True)  # <-- Modo Debug

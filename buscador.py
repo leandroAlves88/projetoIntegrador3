@@ -144,17 +144,23 @@ def raqueamento(dataframe):
 
 
 def filtro_concurso_valido(data):
-    data_atual_texto = time.strftime("%d/%m/%Y", time.localtime())
-    dia_atual, mes_atual, ano_atual = data_atual_texto.split("/")
-    dia, mes, ano = data.split("/")
-    ano_igual_ou_maior = int(ano) >= int(ano_atual)
-    data_prox_mes_e_valida = ano_igual_ou_maior and int(mes) > int(mes_atual)
-    data_mes_atual_e_valida = (
-        ano_igual_ou_maior and int(mes) == int(mes_atual) and int(dia) >= int(dia_atual)
-    )
-    if data_prox_mes_e_valida or data_mes_atual_e_valida:
+    # print("Informação da data: " + data)
+    if data is None or data == "":
         return True
-    return False
+    else:
+        data_atual_texto = time.strftime("%d/%m/%Y", time.localtime())
+        dia_atual, mes_atual, ano_atual = data_atual_texto.split("/")
+        dia, mes, ano = data.split("/")
+        ano_igual_ou_maior = int(ano) >= int(ano_atual)
+        data_prox_mes_e_valida = ano_igual_ou_maior and int(mes) > int(mes_atual)
+        data_mes_atual_e_valida = (
+            ano_igual_ou_maior
+            and int(mes) == int(mes_atual)
+            and int(dia) >= int(dia_atual)
+        )
+        if data_prox_mes_e_valida or data_mes_atual_e_valida:
+            return True
+        return False
 
 
 def get_data_pci(d):
@@ -170,7 +176,9 @@ def get_json_data(d):
     data = {
         "link": d.a["href"],
         "titulo": d.a.text,
-        # "data_limite": d.find_all("span")[-1].text,
+        "data_limite": d.find_all("span")[-1].text,
+        "nivel": d.find_all("span")[-2].text,
+        "cargo": d.find_all("span")[-3].text,
     }
     return data
 
@@ -179,13 +187,14 @@ def get_concursos_pci(x):
     try:
         response = ""
         response = requests.get(URL1 + x, headers=CABECALHO, timeout=20)
+        if response != "null" and response is not None:
+            print("Retorno: 200")
     except requests.Timeout:
         print("A solicitação atingiu o tempo limite de 10 segundos.")
+        return "Site indisponível tente novamente mais tarde"
     except requests.RequestException as erro:
         print(f"Ocorreu um erro na solicitação: {erro}")
-
-    if response != "null" and response is not None:
-        print("Retorno: 200")
+        return "Erro tente novamente mais tarde"
 
     # response = requests.get("https://www.pciconcursos.com.br/pesquisa/?q=" + x)
     texto = response.text
