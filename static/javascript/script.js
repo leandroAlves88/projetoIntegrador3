@@ -1,28 +1,6 @@
-//import fetch from "fetch";
-
-async function geraDados() {
-    // Realize uma solicitação AJAX para obter os dados JSON
-    var campo_busca = document.getElementById('txtBusca').value;
-    console.log(campo_busca)
-
-    const response = await fetch('/resultadoBusca/' + campo_busca);
-    console.log('response: ' + response)
-    const data = await response.json();
-    console.log('data: ' + data)
-    const div = document.querySelector("#data");
-    div.innerHTML = data;
-
-    /*fetch('/resultadoBusca/' + campo_busca)
-        .then(response => response.json())
-        .then(data => {
-            // Atualize o conteúdo do div com os novos dados
-            document.getElementById('divPrincialResultados').innerHTML = `Link: ${data.link} Titulo: ${data.titulo} Nível: ${data.nivel} Cargo: ${data.cargo} Data Limite: ${data.data_limite}`;
-        });*/
-}
-
 function getMotorBusca() {
     var campo_busca = document.getElementById('txtBusca').value;
-    console.log(campo_busca)
+    console.log('campo busca: ' + campo_busca)
 
     fetch('/resultadoBusca/' + campo_busca)
         .then(response => response.json())
@@ -34,11 +12,12 @@ function getMotorBusca() {
             data.forEach(item => {
                 // Crie elementos HTML para exibir cada objeto
                 let divItem = document.createElement('div');
+                divItem.classList.add('divResultado');
                 divItem.innerHTML = `
-                <a href="${item.link}">Titulo: ${item.titulo}</a>,
-                Cargo: ${item.cargo},
-                Nível: ${item.nivel},
-                Data Limite: ${item.data_limite}
+                <div class="resultado-a"><a href="${item.link}"><b>Titulo</b>: ${item.titulo}</a></div>
+                <div class="resultado-b"><b>Cargo</b>: ${item.cargo}<br>
+                <b>Nível</b>: ${item.nivel}</div>
+                <div class="resultado-c"><b>Data Limite</b>: ${item.data_limite}</div>
                 `;
                 document.getElementById('divPrincialResultados').appendChild(divItem);
             });
