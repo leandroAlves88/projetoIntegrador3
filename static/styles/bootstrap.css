@@ -587,7 +587,7 @@ pre code {
 .divResultado {
     display: flex;
     border: 1px solid #17a2b8;
-    ;
+    border-radius: 5px
 }
 
 .resultado-a {

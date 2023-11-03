@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, jsonify
 import buscador
-import pandas as pd
 
 app = Flask(__name__)
 
@@ -19,6 +18,14 @@ def resultados_busca(campo_busca):
 
     print(f"campo pesquisar: {campo_busca}")
     retorno_vagas = buscador.get_concursos_pci(campo_busca)
+    print(retorno_vagas)
+    return jsonify(retorno_vagas)
+
+
+@app.route("/buscaVagas/cisoeste", methods=["GET"])
+def busca_cisoeste():
+    """Essa função tem o objetivo exibir a pagina dos resultados das buscas."""
+    retorno_vagas = buscador.get_concursos_cisoeste()
     print(retorno_vagas)
     return jsonify(retorno_vagas)
 
