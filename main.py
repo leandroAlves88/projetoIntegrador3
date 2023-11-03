@@ -14,31 +14,18 @@ def home():
 
 
 @app.route("/resultadoBusca/<campo_busca>", methods=["GET"])
-def resultadosBusca(campo_busca):
-    """
-    Essa função tem o objetivo exibir a pagina dos resultados das buscas.
-    """
-    # campo_busca = request.form["txtBusca"]
+def resultados_busca(campo_busca):
+    """Essa função tem o objetivo exibir a pagina dos resultados das buscas."""
+
     print(f"campo pesquisar: {campo_busca}")
     retorno_vagas = buscador.get_concursos_pci(campo_busca)
-
-    """retorno_vagas = pd.DataFrame()
-    print("Quantidade de registros iniciais:", len(retorno_vagas.index))
-
-    retorno_vagas = buscador.motor_busca(campo_busca)
-    print(type(retorno_vagas))
-
-    print("Quantidade de registros encontrados:", len(retorno_vagas.index))
-
-    retorno_vagas = retorno_vagas.to_html(header="true", index=False, justify="center")"""
-
-    # return render_template("/resultados.html", df_html=retorno_vagas, title="Vagas")
     print(retorno_vagas)
     return jsonify(retorno_vagas)
 
 
 @app.route("/resultados")
 def resultados():
+    """Rota para a pagina de resultados"""
     return render_template("/resultados.html")
 
 

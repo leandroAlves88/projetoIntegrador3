@@ -584,6 +584,31 @@ pre code {
     margin-left: auto
 }
 
+.divResultado {
+    display: flex;
+    border: 1px solid #17a2b8;
+    ;
+}
+
+.resultado-a {
+    width: 460px;
+    height: 70px;
+    margin: 5px;
+}
+
+.resultado-b {
+    width: 450px;
+    height: 70px;
+    margin: 5px;
+}
+
+.resultado-c {
+    width: 200px;
+    height: 70px;
+    margin: 5px;
+}
+
+
 @media (min-width:576px) {
     .container {
         max-width: 540px
