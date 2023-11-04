@@ -26,7 +26,9 @@ CABECALHO = {
 URL1 = "https://www.pciconcursos.com.br/pesquisa/?q="
 URL1CISOESTE = "https://www.pciconcursos.com.br/concursos/sudeste/"
 URL2 = "https://jcconcursos.com.br/busca?q="
+URL2CISOESTE = "https://jcconcursos.com.br/concursos/sp"
 URL3 = "https://concursosnobrasil.com/busca/?q="
+URL3CISOESTE = "https://concursosnobrasil.com/concursos/sp/"
 
 
 def gravalog(retorno):
@@ -44,7 +46,11 @@ def gravalog(retorno):
 
 def filtro_concurso_valido(data):
     """valida se a data do concurso está vencida"""
-    if data is None or data == "":
+    if "Cancelado" in data:
+        return False
+    elif data is None or data == "":
+        return True
+    elif "/" not in data:
         return True
     else:
         data_atual_texto = time.strftime("%d/%m/%Y", time.localtime())
