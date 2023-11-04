@@ -12,7 +12,7 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/resultadoBusca/<campo_busca>", methods=["GET"])
+@app.route("/buscaVagasSP/<campo_busca>", methods=["GET"])
 def resultados_busca(campo_busca):
     """Essa função tem o objetivo exibir a pagina dos resultados das buscas."""
 
@@ -22,18 +22,28 @@ def resultados_busca(campo_busca):
     return jsonify(retorno_vagas)
 
 
-@app.route("/buscaVagas/cisoeste", methods=["GET"])
+@app.route("/buscaVagas/cioeste", methods=["GET"])
 def busca_cisoeste():
-    """Essa função tem o objetivo exibir a pagina dos resultados das buscas."""
+    """Essa função tem o objetivo exibir as vagas das cidades pertencentes ao grupo cisoeste."""
     retorno_vagas = buscador.get_concursos_cisoeste()
     print(retorno_vagas)
     return jsonify(retorno_vagas)
 
 
-@app.route("/resultados")
+@app.route("/buscaVagas/cioeste/<cidade>", methods=["GET"])
+def busca_cisoeste_cidade(cidade):
+    """Essa função tem o objetivo exibir a pagina dos resultados das buscas."""
+
+    print(f"campo pesquisar: {cidade}")
+    retorno_vagas = buscador.get_concursos_cisoeste_cidade(cidade)
+    print(retorno_vagas)
+    return jsonify(retorno_vagas)
+
+
+@app.route("/cioeste")
 def resultados():
-    """Rota para a pagina de resultados"""
-    return render_template("/resultados.html")
+    """Rota para a pagina de busca do grupo de cidades cioeste"""
+    return render_template("/cioeste.html")
 
 
 @app.route("/login")

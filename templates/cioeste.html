@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section id="section-about" class="bg-grey">
+    <div class="container">
+        <div id="home-row" class="row justify-content-center align-items-center">
+            <div id="home-column" class="col-md-6">
+                <div id="home-box" class="col-md-12">
+
+                    <div class="form-group">
+                        <img src="{{ url_for('static', filename = 'images/logoCioeste.png')}}" alt="about image"
+                            class="img-responsive">
+                    </div>
+                    <h5 class="text-center text-info">"CIOESTE - Consórcio Intermunicipal da Região Oeste
+                        Metropolitana de São Paulo"
+                    </h5>
+                    <!--<div class="form-group">
+                        <input type="text" name="txtBusca" id="txtBusca" class="form-control" placeholder="Buscar Vaga">
+                    </div>-->
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-info btn-md" value="Busca por Todos"
+                            onclick="getBuscaTodosCioeste()">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="grupo-botoes">
+            <div class="grupo-botoes-divisao">
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="Araçariguama" id="buscaCidade"
+                        onclick="getBuscaCioesteCidade('Araçariguama')">
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="Barueri" id="buscaCidade"
+                        onclick="getBuscaCioesteCidade('Barueri')">
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="Cajamar" id="buscaCidade"
+                        onclick="getBuscaCioesteCidade('Cajamar')">
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="Carapicuiba" id="buscaCidade"
+                        onclick="getBuscaCioesteCidade('Carapicuiba')">
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="Cotia" id="buscaCidade"
+                        onclick="getBuscaCioesteCidade('Cotia')">
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="Itapevi" id="buscaCidade"
+                        onclick="getBuscaCioesteCidade('Itapevi')">
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="Jandira" id="buscaCidade"
+                        onclick="getBuscaCioesteCidade('Jandira')">
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="Osasco" id="buscaCidade"
+                        onclick="getBuscaCioesteCidade('Osasco')">
+                </div>
+            </div>
+
+            <div class="grupo-botoes-divisao">
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="Pirapora do Bom Jesus"
+                        id="buscaCidade" onclick="getBuscaCioesteCidade('Pirapora do Bom Jesus')">
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="Santana de Parnaíba"
+                        id="buscaCidade" onclick="getBuscaCioesteCidade('Santana de Parnaíba')">
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="São Roque" id="buscaCidade"
+                        onclick="getBuscaCioesteCidade('São Roque')">
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="Vargem Grande Paulista"
+                        id="buscaCidade" onclick="getBuscaCioesteCidade()">
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div id="divPrincialResultadosCioeste" class="divPrincialResultadosCioeste">
+        </div>
+    </div>
+</section>
+{% endblock %}

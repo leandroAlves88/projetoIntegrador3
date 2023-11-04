@@ -584,6 +584,11 @@ pre code {
     margin-left: auto
 }
 
+.grupo-botoes-divisao {
+    display: flex;
+    justify-content: center;
+}
+
 .divResultado {
     display: flex;
     border: 1px solid #17a2b8;
@@ -2285,6 +2290,7 @@ textarea.form-control {
     margin-bottom: 1rem;
     display: flex;
     justify-content: center;
+    padding: 1px;
 }
 
 .form-text {
