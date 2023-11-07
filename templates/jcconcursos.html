@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section id="section-about" class="bg-grey">
+    <div class="container">
+        <div id="home-row" class="row justify-content-center align-items-center">
+            <div id="home-column" class="col-md-6">
+                <div id="home-box" class="col-md-12">
+                    <br>
+                    <h5 class="text-center text-info">"Vagas na plataforma JC Concursos"
+                    </h5>
+                    <!--<div class="form-group">
+                        <input type="text" name="txtBusca" id="txtBusca" class="form-control" placeholder="Buscar Vaga">
+                    </div>-->
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-info btn-md" value="Busca JC Concurso"
+                            onclick="getBuscajcconcurso()">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <div id="divPrincialResultadosJcConcursos" class="divPrincialResultadosJcConcursos">
+        </div>
+    </div>
+</section>
+{% endblock %}

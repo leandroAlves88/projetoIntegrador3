@@ -17,11 +17,14 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li {% if request.endpoint=='cioeste' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
-        <a class="nav-link" href="/cioeste">Cioeste <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/cioeste">Cioeste<span class="sr-only">(current)</span></a>
       </li>
-      <!--<li {% if request.endpoint=='login' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
-        <a class="nav-link" href="/login">Login</a>
-        </li>-->
+      <li {% if request.endpoint=='ConcursoBrasil' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/concursos_brasil">Concursos Brasil</a>
+      </li>
+      <li {% if request.endpoint=='Jcconcursos' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+        <a class="nav-link" href="/jcconcursos">JC Concursos</a>
+      </li>
       <li {% if request.endpoint=='sobre' %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
         <a class="nav-link" href="/sobre">Sobre</a>
       </li>

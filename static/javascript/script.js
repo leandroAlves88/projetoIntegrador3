@@ -2,7 +2,7 @@ function getMotorBusca() {
     var campo_busca = document.getElementById('txtBusca').value;
     console.log('campo busca: ' + campo_busca)
 
-    fetch('/buscaVagasSP/' + campo_busca)
+    fetch('/buscaVagasPCI/' + campo_busca)
         .then(response => response.json())
         .then(data => {
             // Limpa o conteúdo existente do div
@@ -86,6 +86,65 @@ function getBuscaCioesteCidade(cidade) {
                 });
             }
         });
+}
+
+function getBuscaConcursosBrasil() {
+
+
+    fetch('/buscaVagas/cbrasil/' + 'sp')
+        .then(response => response.json())
+        .then(data => {
+            // Limpa o conteúdo existente do div
+            document.getElementById('divPrincialResultadosConcursosBrasil').innerHTML = "";
+
+            if (data.length === 0) {
+                document.getElementById('divPrincialResultadosConcursosBrasil').textContent = "Nenhum resultado encontrado";
+            } else {
+                // Itere sobre os objetos do conjunto de dados e exiba-os
+                data.forEach(item => {
+                    // Crie elementos HTML para exibir cada objeto
+                    let divItem = document.createElement('div');
+                    divItem.classList.add('divResultado');
+                    divItem.innerHTML = `
+                <div class="resultado-a"><a href="${item.link}"><b>Titulo</b>: ${item.organization}</a></div>
+                <div class="resultado-b"><b>Vagas</b>: ${item.workPlacesAvailable}<br>
+                <b>Status</b>: ${item.status}</div>
+                `;
+                    document.getElementById('divPrincialResultadosConcursosBrasil').appendChild(divItem);
+                });
+            }
+        });
+}
+
+function getBuscajcconcurso() {
+
+    fetch('/buscaVagas/jcconcursos/' + 'sp')
+        .then(response => response.json())
+        .then(data => {
+            // Limpa o conteúdo existente do div
+            document.getElementById('divPrincialResultadosJcConcursos').innerHTML = "";
+
+            if (data.length === 0) {
+                document.getElementById('divPrincialResultadosJcConcursos').textContent = "Nenhum resultado encontrado";
+            } else {
+                // Itere sobre os objetos do conjunto de dados e exiba-os
+                data.forEach(item => {
+                    // Crie elementos HTML para exibir cada objeto
+                    let divItem = document.createElement('div');
+                    divItem.classList.add('divResultado');
+                    divItem.innerHTML = `
+                <div class="resultado-a"><a href="${item.link}"><b>Titulo</b>: ${item.titulo}</a></div>
+                <div class="resultado-b"><b>Nível</b>: ${item.Nivel}<br>
+                <b>Salário</b>: ${item.salario}</div>
+                <div class="resultado-c"><b>Status</b>: ${item.Status}<br>
+                <b>Número Vagas: </b>: ${item.numero_vagas}
+                </div>
+                `;
+                    document.getElementById('divPrincialResultadosJcConcursos').appendChild(divItem);
+                });
+            }
+        });
+
 }
 
 function exportaRelatorio() {
