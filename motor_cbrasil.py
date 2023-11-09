@@ -35,9 +35,9 @@ def get_status_item(item) -> str:
     try:
         item.find("span", class_="label-previsto").text
     except:
-        return "open"
+        return "Aberto"
 
-    return "expected"
+    return "Previsto"
 
 
 def concursos_cbrasil(x):
