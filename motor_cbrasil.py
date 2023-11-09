@@ -5,71 +5,33 @@ from bs4 import BeautifulSoup
     ConcursosNoBrasil web scrapper and API
 """
 
-availableCategories = [
-    "br",
-    "ac",
-    "al",
-    "am",
-    "ap",
-    "ba",
-    "ce",
-    "df",
-    "es",
-    "go",
-    "ma",
-    "mg",
-    "ms",
-    "mt",
-    "pa",
-    "pb",
-    "pe",
-    "pi",
-    "pr",
-    "rj",
-    "rn",
-    "ro",
-    "rr",
-    "rs",
-    "sc",
-    "se",
-    "sp",
-    "to",
-]
-baseURL = "https://concursosnobrasil.com/concursos/"
-errorMessage = ""
+URL = "https://concursosnobrasil.com/concursos/"
+CABECALHO = {
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+}
 
 
-def pageRequest(url: str):
+def init_webscraper(url: str, parser: str = "html.parser"):
+    """Esse metodo realiza o webscraping na plataforma Concursos do Brasil"""
     try:
-        return requests.get(url)
-    except requests.HTTPError:
-        print("An http error has ocurred, process has exited")
-        return None
-    except:
-        print("An error has ocurred, process has exited")
-        return None
+        response = ""
+        response = requests.get(url, headers=CABECALHO, timeout=20)
+    except requests.Timeout:
+        print("A solicitação atingiu o tempo limite de 10 segundos.")
+        return "Site indisponível tente novamente mais tarde"
+    except requests.RequestException as erro:
+        print(f"Ocorreu um erro na solicitação: {erro}")
+        return "Erro tente novamente mais tarde"
 
-
-def initWebScraper(url: str, parser: str = "html.parser"):
-    webResponse = pageRequest(url)
-
-    if webResponse == None:
+    if response is None:
         print("Canceling scrapping")
         return None
 
-    return BeautifulSoup(webResponse.content, parser)
+    return BeautifulSoup(response.content, parser)
 
 
-def categoryTarget(category: str) -> str:
-    global errorMessage
-    if (len(category) != 2) or (category not in availableCategories):
-        errorMessage = "Invalid Category"
-        return ""
-
-    return baseURL + category
-
-
-def getCategoryItemStatus(item) -> str:
+def get_status_item(item) -> str:
+    """Metodo que valida se a vaga está aberta"""
     try:
         item.find("span", class_="label-previsto").text
     except:
@@ -78,30 +40,23 @@ def getCategoryItemStatus(item) -> str:
     return "expected"
 
 
-def concursos_cbrasil(categorySelect):
-    concursosAvailable = []
-    pageScraper = initWebScraper(categoryTarget(categorySelect))
+def concursos_cbrasil(x):
+    """Esse metodo realiza a busca de vadas na plataforma Concursos do Brasil"""
+    concursos_disponiveis = []
+    page_scraper = init_webscraper(URL + x)
 
-    print(pageScraper.prettify())
+    items_retorno = (
+        page_scraper.find("main", class_="taxonomy").find("tbody").find_all("tr")
+    )  # type: ignore
 
-    with open(
-        r"C:\Projetos_Python\concursosnobrasil.html", "w", encoding="utf-8"
-    ) as arquivo:
-        arquivo.write(pageScraper.prettify())
-
-    availableItemsInCategory = (
-        pageScraper.find("main", class_="taxonomy").find("tbody").find_all("tr")
-    )  #  type: ignore
-
-    for item in availableItemsInCategory:
-        concursosAvailable.append(
+    for item in items_retorno:
+        concursos_disponiveis.append(
             {
                 "organization": item.find("a").text.rstrip(),
                 "workPlacesAvailable": item.find_all("td")[1].text.rstrip(),
                 "link": item.find("a").get("href"),
-                "status": getCategoryItemStatus(item),
+                "status": get_status_item(item),
             }
         )
 
-    # print(concursosAvailable)
-    return concursosAvailable
+    return concursos_disponiveis
