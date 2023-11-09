@@ -1,27 +1,27 @@
 import requests
 from bs4 import BeautifulSoup
 
-"""
-    ConcursosNoBrasil web scrapper and API
-"""
-
 URL = "https://concursosnobrasil.com/concursos/"
 CABECALHO = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
 }
 
 
+def request_pagina(url: str):
+    """Esse metodo realiza a requisição a plataforma Concursos do Brasil"""
+    try:
+        return requests.get(url, headers=CABECALHO, timeout=20)
+    except requests.HTTPError:
+        print("An http error has ocurred, process has exited")
+        return None
+    except:
+        print("An error has ocurred, process has exited")
+        return None
+
+
 def init_webscraper(url: str, parser: str = "html.parser"):
     """Esse metodo realiza o webscraping na plataforma Concursos do Brasil"""
-    try:
-        response = ""
-        response = requests.get(url, headers=CABECALHO, timeout=20)
-    except requests.Timeout:
-        print("A solicitação atingiu o tempo limite de 10 segundos.")
-        return "Site indisponível tente novamente mais tarde"
-    except requests.RequestException as erro:
-        print(f"Ocorreu um erro na solicitação: {erro}")
-        return "Erro tente novamente mais tarde"
+    response = request_pagina(url)
 
     if response is None:
         print("Canceling scrapping")
@@ -41,13 +41,13 @@ def get_status_item(item) -> str:
 
 
 def concursos_cbrasil(x):
-    """Esse metodo realiza a busca de vadas na plataforma Concursos do Brasil"""
+    """Esse metodo realiza a busca de vadas na plataforma Concursos Brasil"""
     concursos_disponiveis = []
     page_scraper = init_webscraper(URL + x)
 
     items_retorno = (
         page_scraper.find("main", class_="taxonomy").find("tbody").find_all("tr")
-    )  # type: ignore
+    )
 
     for item in items_retorno:
         concursos_disponiveis.append(
