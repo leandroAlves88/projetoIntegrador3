@@ -3,7 +3,7 @@ Esse repositório tem como objetivo a entrega do projeto integrador
 
 Execução local do sistema
 
-- env/Scripts/activate
+- venv/Scripts/activate
 
 - $env:FLASK_APP = "main"
 

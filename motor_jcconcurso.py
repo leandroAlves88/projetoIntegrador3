@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-URL_BASE = "https://jcconcursos.com.br/concursos/"
+URL_BASE = "https://jcconcursos.com.br/concursos/inscricoes-abertas/"
 CABECALHO = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
 }
@@ -22,12 +22,13 @@ def get_concursos_jcconcursos(x):
 
 
 def get_json_data(d):
+    """Transforma o retorno em dicionario para construção do Json"""
     data = {
         "link": "https://jcconcursos.com.br" + d.a["href"],
-        "titulo": d.h2.text,
-        "numero_vagas": d.find_all("span")[-1].text,
-        "salario": d.find_all("span")[-2].text,
+        "titulo": d.h2.text.strip("Previsto"),
+        "salario": d.find_all("span")[-2].text.strip("Previsto"),
         "Status": d.find_all("span")[-0].text,
-        "Nivel": d.find_all("span")[1].text,
+        "Nivel": d.find_all("span")[1].text.strip("Previsto"),
+        "numero_vagas": d.find_all("span")[-1].text.strip("Previsto"),
     }
     return data

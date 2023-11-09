@@ -25,10 +25,6 @@ CABECALHO = {
 }
 URL1 = "https://www.pciconcursos.com.br/pesquisa/?q="
 URL1CISOESTE = "https://www.pciconcursos.com.br/concursos/sudeste/"
-URL2 = "https://jcconcursos.com.br/busca?q="
-URL2CISOESTE = "https://jcconcursos.com.br/concursos/sp"
-URL3 = "https://concursosnobrasil.com/busca/?q="
-URL3CISOESTE = "https://concursosnobrasil.com/concursos/sp/"
 
 
 def gravalog(retorno):
@@ -95,7 +91,7 @@ def get_concursos_pci(x):
     try:
         response = ""
         response = requests.get(URL1 + x, headers=CABECALHO, timeout=20)
-        if response != "null" and response is not None:
+        if response == "null" and response is not None:
             print("Retorno: 200")
     except requests.Timeout:
         print("A solicitação atingiu o tempo limite de 10 segundos.")
@@ -108,7 +104,6 @@ def get_concursos_pci(x):
     soup = BeautifulSoup(texto, "html.parser")
     concursos = soup.find_all("div", {"class": "ca"})
     concursos_sp = [c for c in concursos if "SP" in c.text]
-    # concursos_sp_medio = [c for c in concursos_sp if "Superior" in c.span.text]
     concursos_sp_validos = [
         c for c in concursos_sp if filtro_concurso_valido(get_data_pci(c))
     ]
