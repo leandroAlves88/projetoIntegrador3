@@ -9,8 +9,18 @@ CABECALHO = {
 
 def get_concursos_jcconcursos(x):
     """Realiza a busca no site pciconsurso e tranforma os dados em json"""
-    response = ""
-    response = requests.get(URL_BASE + x, headers=CABECALHO, timeout=20)
+    try:
+        response = ""
+        response = requests.get(URL_BASE + x, headers=CABECALHO, timeout=20)
+        if response.status_code == 200:
+            print("Retorno: 200")
+    except requests.Timeout:
+        print("A solicitação atingiu o tempo limite de 10 segundos.")
+        return "Site indisponível tente novamente mais tarde"
+    except requests.RequestException as erro:
+        print(f"Ocorreu um erro na solicitação: {erro}")
+        return "Erro tente novamente mais tarde"
+
     texto = response.text
     soup = BeautifulSoup(texto, "html.parser")
 

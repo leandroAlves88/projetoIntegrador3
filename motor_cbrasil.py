@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-URL = "https://concursosnobrasil.com/concursos/"
+URL_BASE = "https://concursosnobrasil.com/concursos/"
 CABECALHO = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
 }
@@ -33,17 +33,15 @@ def init_webscraper(url: str, parser: str = "html.parser"):
 def get_status_item(item) -> str:
     """Metodo que valida se a vaga está aberta"""
     if item.find("div", class_="label-previsto") is None:
-        print("Retorno -> Aberto")
         return "Aberto"
     else:
-        print("Retorno -> Previsto")
         return "Previsto"
 
 
 def concursos_cbrasil(x):
     """Esse metodo realiza a busca de vadas na plataforma Concursos Brasil"""
     concursos_disponiveis = []
-    page_scraper = init_webscraper(URL + x)
+    page_scraper = init_webscraper(URL_BASE + x)
 
     items_retorno = (
         page_scraper.find("main", class_="taxonomy").find("tbody").find_all("tr")

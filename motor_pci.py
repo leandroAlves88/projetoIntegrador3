@@ -91,7 +91,7 @@ def get_concursos_pci(x):
     try:
         response = ""
         response = requests.get(URL1 + x, headers=CABECALHO, timeout=20)
-        if response == "null" and response is not None:
+        if response.status_code == 200:
             print("Retorno: 200")
     except requests.Timeout:
         print("A solicitação atingiu o tempo limite de 10 segundos.")
@@ -116,7 +116,7 @@ def get_concursos_cisoeste():
     try:
         response = ""
         response = requests.get(URL1CISOESTE, headers=CABECALHO, timeout=20)
-        if response != "null" and response is not None:
+        if response.status_code == 200:
             print("Retorno: 200")
     except requests.Timeout:
         print("A solicitação atingiu o tempo limite de 10 segundos.")
@@ -144,7 +144,7 @@ def get_concursos_cisoeste_cidade(cidade):
     try:
         response = ""
         response = requests.get(URL1CISOESTE, headers=CABECALHO, timeout=20)
-        if response != "null" and response is not None:
+        if response.status_code == 200:
             print("Retorno: 200")
     except requests.Timeout:
         print("A solicitação atingiu o tempo limite de 10 segundos.")
