@@ -2,21 +2,27 @@
 {% block content %}
 <section id="section-about" class="bg-grey">
     <div class="container">
-        <div class="row pt-4">
-            <div class="col-md-1"></div>
-            <div class="col-md-6 col-sm-12">
-                <img src="{{ url_for('static', filename = 'images/Imagem3.png')}}" height="245" width="245"
-                    alt="about image" class="img-responsive">
-            </div>
-            <div class="col-md-5 col-sm-12">
-                <div class="about-box">
+        <div id="home-row" class="row justify-content-center align-items-center">
+            <div id="home-column" class="col-md-6">
+                <div id="home-box" class="col-md-12">
+
+                    <div class="form-group">
+                        <img src="{{ url_for('static', filename = 'images/Imagem3.png')}}" alt="about image"
+                            height="245" width="245" class="img-responsive">
+                    </div>
+                    <h6 class="text-center text-dark">
+                        <p>O sistema Super Edital tem com objetivo facilar a
+                            busca por concursos públicos de São Paulo e região.</p>
+                        <p>Esse projeto faz parte do projeto Integrador 3 da Fatec Santana de Parnaíba.</p>
+                        <p>O sistema utiliza um motor de busca que coletam os dados de três plataformas de concursos
+                            públicos.</p>
+                        <p>As fontes de dados se originam dos sites:</p>
+                        <p><b>pciconcursos.com.br, jcconcursos.com.br e concursosnobrasil.com</b></p>
+                    </h6>
                     <br>
-                    <p>O sistema Super Edital tem com objetivo facilar a </p>
-                    <p>busca por concursos públicos de São Paulo e região</p>
-                    <p>As fontes de dados se originam dos sites:</p>
-                    <p>pciconcursos.com.br, jcconcursos.com.br e concursosnobrasil.com</p>
                 </div>
             </div>
+
         </div>
     </div>
 </section>

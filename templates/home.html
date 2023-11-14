@@ -11,26 +11,30 @@
                         <img src="{{ url_for('static', filename = 'images/Imagem3.png')}}" alt="about image"
                             height="245" width="245" class="img-responsive">
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="txtBusca" id="txtBusca" class="form-control" placeholder="Buscar Vaga">
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" name="submit" class="btn btn-info btn-md" value="PESQUISAR"
-                            onclick="getMotorBusca()">
-                    </div>
-
+                    <h5 class="text-center text-dark">
+                        <p>O sistema Super Edital tem com objetivo facilar a
+                            busca por concursos públicos de São Paulo e região.</p>
+                        <p>As fontes de dados se originam dos sites:</p>
+                        <p><b>pciconcursos.com.br, jcconcursos.com.br e concursosnobrasil.com</b></p>
+                    </h5>
                     <br>
-
-                    <h4 class="text-center text-info">"Você encontrou o melhor guia de concursos público da cidade de
-                        São Paulo.
-                        Vamos nessa!"
-                    </h4>
                 </div>
             </div>
-            <br>
+
         </div>
-        <br>
-        <div id="divPrincialResultados" class="divPrincialResultados">
+        <div class="grupo-botoes-divisao">
+            <div class="form-group">
+                <a href="/pciconcursos"><input type="submit" name="submit" class="btn btn-info btn-md"
+                        value="PCI Concursos" id="pcconcurso"></a>
+            </div>
+            <div class="form-group">
+                <a href="/concursos_brasil"><input type="submit" name="submit" class="btn btn-info btn-md"
+                        value="Concursos do Brasil" id="cbrasil"></a>
+            </div>
+            <div class="form-group">
+                <a href="/jcconcursos"><input type="submit" name="submit" class="btn btn-info btn-md"
+                        value="JC Concursos" id="jcconcurso"></a>
+            </div>
         </div>
     </div>
 </section>

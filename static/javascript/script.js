@@ -7,6 +7,7 @@ function getMotorBusca() {
         .then(data => {
             // Limpa o conteúdo existente do div
             document.getElementById('divPrincialResultados').innerHTML = "";
+            document.getElementById('divPrincialResultadosCioeste').innerHTML = "";
 
             // Verifique se o array de dados está vazio
             if (data.length === 0) {
@@ -35,6 +36,7 @@ function getBuscaTodosCioeste() {
         .then(response => response.json())
         .then(data => {
             // Limpa o conteúdo existente do div
+            document.getElementById('divPrincialResultados').innerHTML = "";
             document.getElementById('divPrincialResultadosCioeste').innerHTML = "";
 
             if (data.length === 0) {
@@ -66,6 +68,7 @@ function getBuscaCioesteCidade(cidade) {
         .then(response => response.json())
         .then(data => {
             // Limpa o conteúdo existente do div
+            document.getElementById('divPrincialResultados').innerHTML = "";
             document.getElementById('divPrincialResultadosCioeste').innerHTML = "";
 
             if (data.length === 0) {
