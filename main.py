@@ -8,16 +8,26 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    """
-    Essa função tem o objetivo de iniciar chamando a pagina princial.
-    """
+    """Rota de acesso a pagina a pagina princial."""
     return render_template("home.html")
 
 
-@app.route("/cioeste")
+@app.route("/pciconcursos")
 def resultados():
-    """Essa função tem o objetivo de iniciar chamando a pagina princial cioeste"""
-    return render_template("/cioeste.html")
+    """Rota de acesso a pagina PCI Concursos."""
+    return render_template("/pciconcursos.html")
+
+
+@app.route("/concursos_brasil")
+def concursos_brasil():
+    """Rota de acesso a pagina concursos do brasil."""
+    return render_template("cbrasil.html")
+
+
+@app.route("/jcconcursos")
+def jcconcursos():
+    """Rota de acesso a pagina de jc concursos."""
+    return render_template("jcconcursos.html")
 
 
 @app.route("/login")
@@ -46,22 +56,6 @@ def cadastro():
     Essa função tem o objetivo exibir a pagina de cadastro.
     """
     return render_template("cadastro.html")
-
-
-@app.route("/concursos_brasil")
-def concursos_brasil():
-    """
-    Essa função tem o objetivo exibir a pagina de concursos brasil.
-    """
-    return render_template("cbrasil.html")
-
-
-@app.route("/jcconcursos")
-def jcconcursos():
-    """
-    Essa função tem o objetivo exibir a pagina de jc concursos.
-    """
-    return render_template("jcconcursos.html")
 
 
 """---ENDPOINTS---"""
