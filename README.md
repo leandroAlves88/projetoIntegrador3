@@ -1,7 +1,7 @@
 # projetoIntegrador3
 Esse repositório tem como objetivo a entrega do projeto integrador
 
-# Rodar o sistama de forma localhost
+# Rodar o sistema de forma localhost
 Execução local do sistema
 
 - venv/Scripts/activate
@@ -32,3 +32,5 @@ Recomendação: __NÃO USAR EM PRODUÇÃO__.
   >[Flask](https://flask.palletsprojects.com/en/3.0.x/) - O Flask é um microframework web projetado para ser simples e fácil de usar, permitindo que os desenvolvedores construam rapidamente aplicativos web e APIs.
   
   >[BeautifulSoup 4](https://pypi.org/project/beautifulsoup4/) - Beautiful Soup é uma biblioteca que facilita a extração de informações de páginas da web.
+
+  >[Requests](https://pypi.org/project/requests/) - É um pacote python que permite enviar solicitações http.
