@@ -35,10 +35,10 @@ def get_json_data(d):
     """Transforma o retorno em dicionario para construção do Json"""
     data = {
         "link": "https://jcconcursos.com.br" + d.a["href"],
-        "titulo": d.h2.text.strip("Previsto"),
-        "salario": d.find_all("span")[-2].text.strip("Previsto"),
+        "titulo": d.h2.text.strip("Ab"),
+        "salario": d.find_all("span")[-2].text.strip("Ab"),
         "Status": d.find_all("span")[-0].text,
-        "Nivel": d.find_all("span")[1].text.strip("Previsto"),
-        "numero_vagas": d.find_all("span")[-1].text.strip("Previsto"),
+        "Nivel": d.find_all("span")[1].text.strip("Ab"),
+        "numero_vagas": d.find_all("span")[-1].text.strip("Ab"),
     }
     return data

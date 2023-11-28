@@ -40,26 +40,29 @@ def gravalog(retorno):
 
 def filtro_concurso_valido(data):
     """valida se a data do concurso está vencida"""
-    if "Cancelado" in data:
-        return False
-    elif data is None or data == "":
-        return True
-    elif "/" not in data:
-        return True
-    else:
-        data_atual_texto = time.strftime("%d/%m/%Y", time.localtime())
-        dia_atual, mes_atual, ano_atual = data_atual_texto.split("/")
-        dia, mes, ano = data.split("/")
-        ano_igual_ou_maior = int(ano) >= int(ano_atual)
-        data_prox_mes_e_valida = ano_igual_ou_maior and int(mes) > int(mes_atual)
-        data_mes_atual_e_valida = (
-            ano_igual_ou_maior
-            and int(mes) == int(mes_atual)
-            and int(dia) >= int(dia_atual)
-        )
-        if data_prox_mes_e_valida or data_mes_atual_e_valida:
+    try:
+        if "Cancelado" in data:
+            return False
+        elif data is None or data == "":
             return True
-        return False
+        elif "/" not in data:
+            return True
+        else:
+            data_atual_texto = time.strftime("%d/%m/%Y", time.localtime())
+            dia_atual, mes_atual, ano_atual = data_atual_texto.split("/")
+            dia, mes, ano = data.split("/")
+            ano_igual_ou_maior = int(ano) >= int(ano_atual)
+            data_prox_mes_e_valida = ano_igual_ou_maior and int(mes) > int(mes_atual)
+            data_mes_atual_e_valida = (
+                ano_igual_ou_maior
+                and int(mes) == int(mes_atual)
+                and int(dia) >= int(dia_atual)
+            )
+            if data_prox_mes_e_valida or data_mes_atual_e_valida:
+                return True
+            return False
+    except:
+        return True
 
 
 def get_data_pci(d):

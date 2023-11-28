@@ -46,10 +46,6 @@ def concursos_cbrasil(x):
     items_retorno = (
         page_scraper.find("main", class_="taxonomy").find("tbody").find_all("tr")
     )
-    with open(
-        r"C:\Projetos_Python\concursosBrasil.html", "w", encoding="utf-8"
-    ) as arquivo:
-        arquivo.write(page_scraper.prettify())
 
     for item in items_retorno:
         concursos_disponiveis.append(
